@@ -39,10 +39,10 @@
             this.txtWorkPath = new System.Windows.Forms.TextBox();
             this.btnSetWorkPath = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.rBtnSelectSite = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.lbCurrencyInfo = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.rbEuropeSite = new System.Windows.Forms.RadioButton();
+            this.rbAmericaSite = new System.Windows.Forms.RadioButton();
+            this.lbCurrencyUnit = new System.Windows.Forms.Label();
+            this.lbCurrencyExchangeRate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSelectSourceExcel
@@ -73,6 +73,7 @@
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(80, 20);
             this.cbCountry.TabIndex = 2;
+            this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.cbCountry_SelectedIndexChanged);
             // 
             // cbCountryTemplate
             // 
@@ -155,59 +156,62 @@
             this.label5.Tag = "";
             this.label5.Text = "选择站点";
             // 
-            // rBtnSelectSite
+            // rbEuropeSite
             // 
-            this.rBtnSelectSite.AutoSize = true;
-            this.rBtnSelectSite.Checked = true;
-            this.rBtnSelectSite.Location = new System.Drawing.Point(90, 104);
-            this.rBtnSelectSite.Name = "rBtnSelectSite";
-            this.rBtnSelectSite.Size = new System.Drawing.Size(59, 16);
-            this.rBtnSelectSite.TabIndex = 11;
-            this.rBtnSelectSite.TabStop = true;
-            this.rBtnSelectSite.Text = "欧洲站";
-            this.rBtnSelectSite.UseVisualStyleBackColor = true;
+            this.rbEuropeSite.AutoSize = true;
+            this.rbEuropeSite.Checked = true;
+            this.rbEuropeSite.Location = new System.Drawing.Point(90, 104);
+            this.rbEuropeSite.Name = "rbEuropeSite";
+            this.rbEuropeSite.Size = new System.Drawing.Size(59, 16);
+            this.rbEuropeSite.TabIndex = 11;
+            this.rbEuropeSite.TabStop = true;
+            this.rbEuropeSite.Tag = "Europe";
+            this.rbEuropeSite.Text = "欧洲站";
+            this.rbEuropeSite.UseVisualStyleBackColor = true;
+            this.rbEuropeSite.CheckedChanged += new System.EventHandler(this.rbEuropeSite_CheckedChanged);
             // 
-            // radioButton1
+            // rbAmericaSite
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(155, 104);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(59, 16);
-            this.radioButton1.TabIndex = 12;
-            this.radioButton1.Text = "美洲站";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbAmericaSite.AutoSize = true;
+            this.rbAmericaSite.Location = new System.Drawing.Point(155, 104);
+            this.rbAmericaSite.Name = "rbAmericaSite";
+            this.rbAmericaSite.Size = new System.Drawing.Size(59, 16);
+            this.rbAmericaSite.TabIndex = 12;
+            this.rbAmericaSite.Tag = "America";
+            this.rbAmericaSite.Text = "美洲站";
+            this.rbAmericaSite.UseVisualStyleBackColor = true;
             // 
-            // lbCurrencyInfo
+            // lbCurrencyUnit
             // 
-            this.lbCurrencyInfo.AutoSize = true;
-            this.lbCurrencyInfo.ForeColor = System.Drawing.Color.Blue;
-            this.lbCurrencyInfo.Location = new System.Drawing.Point(576, 79);
-            this.lbCurrencyInfo.Name = "lbCurrencyInfo";
-            this.lbCurrencyInfo.Size = new System.Drawing.Size(65, 12);
-            this.lbCurrencyInfo.TabIndex = 13;
-            this.lbCurrencyInfo.Tag = "";
-            this.lbCurrencyInfo.Text = "货币单位：";
+            this.lbCurrencyUnit.AutoSize = true;
+            this.lbCurrencyUnit.ForeColor = System.Drawing.Color.Blue;
+            this.lbCurrencyUnit.Location = new System.Drawing.Point(573, 79);
+            this.lbCurrencyUnit.Name = "lbCurrencyUnit";
+            this.lbCurrencyUnit.Size = new System.Drawing.Size(65, 12);
+            this.lbCurrencyUnit.TabIndex = 13;
+            this.lbCurrencyUnit.Tag = "";
+            this.lbCurrencyUnit.Text = "货币单位：";
             // 
-            // label6
+            // lbCurrencyExchangeRate
             // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Blue;
-            this.label6.Location = new System.Drawing.Point(576, 106);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 12);
-            this.label6.TabIndex = 14;
-            this.label6.Tag = "";
-            this.label6.Text = "货币汇率：";
+            this.lbCurrencyExchangeRate.AutoSize = true;
+            this.lbCurrencyExchangeRate.ForeColor = System.Drawing.Color.Blue;
+            this.lbCurrencyExchangeRate.Location = new System.Drawing.Point(573, 106);
+            this.lbCurrencyExchangeRate.Name = "lbCurrencyExchangeRate";
+            this.lbCurrencyExchangeRate.Size = new System.Drawing.Size(65, 12);
+            this.lbCurrencyExchangeRate.TabIndex = 14;
+            this.lbCurrencyExchangeRate.Tag = "";
+            this.lbCurrencyExchangeRate.Text = "货币汇率：";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 476);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.lbCurrencyInfo);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.rBtnSelectSite);
+            this.Controls.Add(this.lbCurrencyExchangeRate);
+            this.Controls.Add(this.lbCurrencyUnit);
+            this.Controls.Add(this.rbAmericaSite);
+            this.Controls.Add(this.rbEuropeSite);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSetWorkPath);
             this.Controls.Add(this.txtWorkPath);
@@ -239,10 +243,10 @@
         private System.Windows.Forms.TextBox txtWorkPath;
         private System.Windows.Forms.Button btnSetWorkPath;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton rBtnSelectSite;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label lbCurrencyInfo;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton rbEuropeSite;
+        private System.Windows.Forms.RadioButton rbAmericaSite;
+        private System.Windows.Forms.Label lbCurrencyUnit;
+        private System.Windows.Forms.Label lbCurrencyExchangeRate;
     }
 }
 
