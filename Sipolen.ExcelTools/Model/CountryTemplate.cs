@@ -22,6 +22,11 @@ namespace Sipolen.ExcelTools.Model
         public string TemplateCode { get; set; }
 
         /// <summary>
+        /// 模板Excel Sheet 名称
+        /// </summary>
+        public string TemplateSheetName { get; set; }
+
+        /// <summary>
         /// 国家编码
         /// </summary>
         public string CountryCode { get; set; }

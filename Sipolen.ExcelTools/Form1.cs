@@ -26,6 +26,11 @@ namespace Sipolen.ExcelTools
         /// </summary>
         private List<CountryTemplate> templateList = new List<CountryTemplate>();
 
+        /// <summary>
+        /// 原表Excel路径
+        /// </summary>
+        private string sourceExcelPath = "";
+
         public Form1()
         {
             InitializeComponent();
@@ -58,43 +63,43 @@ namespace Sipolen.ExcelTools
 
             #region 欧洲站国家
             #region 英国
-            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "电脑和配件", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "行李箱包", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居表", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居装修", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "汽车用品", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "玩具", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Britain" });
-            templateList.Add(new CountryTemplate { TemplateName = "照明", TemplateCode = "", CountryCode = "Britain" });
+            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "电脑和配件", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "行李箱包", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居表", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居装修", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "汽车用品", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "玩具", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
+            templateList.Add(new CountryTemplate { TemplateName = "照明", TemplateCode = "", CountryCode = "Britain", TemplateSheetName = "模板" });
             #endregion
 
             #region 德国
-            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Germany" });
-            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "Germany" });
-            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "Germany" });
-            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Germany" });
-            templateList.Add(new CountryTemplate { TemplateName = "计算机", TemplateCode = "", CountryCode = "Germany" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居厨房", TemplateCode = "", CountryCode = "Germany" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Germany" });
-            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Germany" });
-            templateList.Add(new CountryTemplate { TemplateName = "汽车", TemplateCode = "", CountryCode = "Germany" });
-            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Germany" });
+            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
+            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
+            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
+            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
+            templateList.Add(new CountryTemplate { TemplateName = "计算机", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居厨房", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
+            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
+            templateList.Add(new CountryTemplate { TemplateName = "汽车", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
+            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Germany", TemplateSheetName = "Vorlage" });
             #endregion
 
             #region 法国
-            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "France" });
-            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "France" });
-            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "France" });
-            templateList.Add(new CountryTemplate { TemplateName = "电脑配件", TemplateCode = "", CountryCode = "France" });
-            templateList.Add(new CountryTemplate { TemplateName = "电子科技", TemplateCode = "", CountryCode = "France" });
-            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "France" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "France" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "France" });
-            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "France" });
-            templateList.Add(new CountryTemplate { TemplateName = "玩具", TemplateCode = "", CountryCode = "France" });
+            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "电脑配件", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "电子科技", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "玩具", TemplateCode = "", CountryCode = "France", TemplateSheetName = "Template" });
             #endregion
 
             #region 意大利
@@ -110,52 +115,52 @@ namespace Sipolen.ExcelTools
             #endregion
 
             #region 西班牙
-            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Spain" });
-            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "Spain" });
-            templateList.Add(new CountryTemplate { TemplateName = "电脑", TemplateCode = "", CountryCode = "Spain" });
-            templateList.Add(new CountryTemplate { TemplateName = "户外", TemplateCode = "", CountryCode = "Spain" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "Spain" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Spain" });
-            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Spain" });
-            templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "Spain" });
-            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Spain" });
+            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Spain", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "Spain", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "电脑", TemplateCode = "", CountryCode = "Spain", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "户外", TemplateCode = "", CountryCode = "Spain", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "Spain", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Spain", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Spain", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "Spain", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Spain", TemplateSheetName = "Template" });
             #endregion
             #endregion
 
             #region 美洲站国家
 
             #region 美国
-            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "电脑", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "工具和家居装修", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居和园艺", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "手机及配件", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "相机和摄影", TemplateCode = "", CountryCode = "America" });
-            templateList.Add(new CountryTemplate { TemplateName = "消费类电子产品", TemplateCode = "", CountryCode = "America" });
+            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "电脑", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "工具和家居装修", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居和园艺", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "手机及配件", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "相机和摄影", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "消费类电子产品", TemplateCode = "", CountryCode = "America", TemplateSheetName = "Template" });
             #endregion
 
             #region 加拿大
-            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Canada" });
-            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "Canada" });
-            templateList.Add(new CountryTemplate { TemplateName = "电脑", TemplateCode = "", CountryCode = "Canada" });
-            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Canada" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "Canada" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Canada" });
-            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Canada" });
-            templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "Canada" });
-            templateList.Add(new CountryTemplate { TemplateName = "箱包", TemplateCode = "", CountryCode = "Canada" });
+            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "电脑", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "箱包", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
             #endregion
 
             #region 墨西哥
-            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Mexico" });
-            templateList.Add(new CountryTemplate { TemplateName = "墨西哥灯表", TemplateCode = "", CountryCode = "Mexico" });
-            templateList.Add(new CountryTemplate { TemplateName = "墨西哥家居表", TemplateCode = "", CountryCode = "Mexico" });
-            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Mexico" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Mexico", TemplateSheetName = "Formatos" });
+            templateList.Add(new CountryTemplate { TemplateName = "墨西哥灯表", TemplateCode = "", CountryCode = "Mexico", TemplateSheetName = "Formatos" });
+            templateList.Add(new CountryTemplate { TemplateName = "墨西哥家居表", TemplateCode = "", CountryCode = "Mexico", TemplateSheetName = "Formatos" });
+            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Mexico", TemplateSheetName = "Formatos" });
             #endregion
 
             #endregion
@@ -168,7 +173,7 @@ namespace Sipolen.ExcelTools
             BindCountryList("Europe");
 
             #endregion
-        } 
+        }
         #endregion
 
         #region 国家与国家模板列表绑定
@@ -216,6 +221,11 @@ namespace Sipolen.ExcelTools
 
         #region 事件绑定
 
+        /// <summary>
+        /// 选择原始导出表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSelectSourceExcel_Click(object sender, EventArgs e)
         {
             //初始化一个OpenFileDialog类
@@ -236,7 +246,8 @@ namespace Sipolen.ExcelTools
                 {
                     //获取用户选择的文件
                     FileInfo fileInfo = new FileInfo(fileDialog.FileName);
-                   
+                    lbSourceExcelPath.Text = "已选择原表信息：" + fileInfo.Name;
+                    sourceExcelPath = fileDialog.FileName;//为源excel路径赋值
                 }
             }
         }
@@ -282,6 +293,24 @@ namespace Sipolen.ExcelTools
                 BindCountryList(rbAmericaSite.Tag.ToString());//绑定美洲站国家
         }
 
+        /// <summary>
+        /// 开始移表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBeginMove_Click(object sender, EventArgs e)
+        {
+            string sourcePath = sourceExcelPath;//原Excel表路径
+            var currentCountry = cbCountry.SelectedItem as Country;
+            var currentCountryTemplate = cbCountryTemplate.SelectedItem as CountryTemplate;
+
+            //获得模板excel路径
+            string templatePath = string.Format("Template/{0}/{1}.xls", currentCountry.CountryName, currentCountryTemplate.TemplateName);
+            if (!File.Exists(templatePath))
+                templatePath = string.Format("Template/{0}/{1}.xlsm", currentCountry.CountryName, currentCountryTemplate.TemplateName);
+            var sourceTb = ExcelHelper.RenderDataTableFromExcel(sourcePath, 0, 2);
+            var targetTb = ExcelHelper.RenderDataTableFromExcel(templatePath, currentCountryTemplate.TemplateSheetName, 2);
+        }
 
         #endregion
 
