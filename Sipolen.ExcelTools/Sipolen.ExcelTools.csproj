@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="Model\CountryTemplate.cs" />
     <Compile Include="Model\Country.cs" />
+    <Compile Include="SipolenExcelUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
