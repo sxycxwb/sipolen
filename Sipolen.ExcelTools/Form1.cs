@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sipolen.Code;
+using Sipolen.ExcelTools.DTO;
 using Sipolen.ExcelTools.Model;
 
 namespace Sipolen.ExcelTools
@@ -318,13 +319,13 @@ namespace Sipolen.ExcelTools
             string templatePath = string.Format("Template/{0}/{1}.xls", selectedCountry.CountryName, selectedCountryTemplate.TemplateName);
             if (!File.Exists(templatePath))
             {
-               templatePath = string.Format("Template/{0}/{1}.xlsm", selectedCountry.CountryName, selectedCountryTemplate.TemplateName);
+                templatePath = string.Format("Template/{0}/{1}.xlsm", selectedCountry.CountryName, selectedCountryTemplate.TemplateName);
                 extensionName = "xlsm";
             }
             //复制目标文件名
             var targetFileName = string.Format("{0}_{1}_{2}_{3}.{4}", selectedCountry.CountryName, selectedCountryTemplate.TemplateName, sourceExcelNameFlag, DateTime.Now.ToString("yyyyMMdd-HHmm"), extensionName);
             //复制目标文件路径
-            var targetPath = Path.Combine(workPath, DateTime.Now.ToString("yyyy-MM-dd"), selectedCountry.CountryName,targetFileName);
+            var targetPath = Path.Combine(workPath, DateTime.Now.ToString("yyyy-MM-dd"), selectedCountry.CountryName, targetFileName);
             //复制目标目录路径，不存在则创建
             var targetDirectory = Path.Combine(workPath, DateTime.Now.ToString("yyyy-MM-dd"), selectedCountry.CountryName);
             if (!Directory.Exists(targetDirectory))
@@ -345,14 +346,38 @@ namespace Sipolen.ExcelTools
         {
             string sourcePath = sourceExcelPath;//原Excel表路径
             var currentCountryTemplate = cbCountryTemplate.SelectedItem as CountryTemplate;
-            
+
             var sourceTb = ExcelHelper.RenderDataTableFromExcel(sourcePath, 0, 2);
+            var inputDto = GetExcelInputDto();
+            sourceTb = new SipolenExcelUtility().HanderSourceDt(sourceTb, inputDto);
             var targetTb = ExcelHelper.RenderDataTableFromExcel(targetExcelPath, currentCountryTemplate.TemplateSheetName, 2);
             var dt = SipolenExcelUtility.MoveDataTable(sourceTb, targetTb);
 
             SipolenExcelUtility.ExportExcelFromDt(dt, targetExcelPath, currentCountryTemplate.TemplateSheetName);
         }
 
+
+        #endregion
+
+        #region private方法
+
+        private TargetExcelInputDto GetExcelInputDto()
+        {
+            var selectCountry = cbCountry.SelectedItem as Country;
+
+            var inputDto = new TargetExcelInputDto();
+            inputDto.ExternalProductId = txtEANCountryCode.Text.Trim() + txtEANFactoryCode.Text.Trim() + txtEANProductCode.Text.Trim();
+            inputDto.BrandName = txtBrandName.Text.Trim();
+            inputDto.FeedProductType = "Test";
+            inputDto.CurrencyExchangeRate = selectCountry.CurrencyExchangeRate;
+            inputDto.Currency = selectCountry.CurrencyUnit;
+            inputDto.Quantity = txtQuantity.Text.Trim();
+            inputDto.ConditionNote = $"Delivery Time {txtDeliveryTimeMin.Text.Trim()}-{txtDeliveryTimeMax.Text.Trim()} Days";
+            inputDto.WebsiteShippingWeight = txtShippingWeight.Text.Trim();
+            inputDto.RecommendedBrowseNodes1 = "000001";
+            inputDto.RecommendedBrowseNodes2 = "000001";
+            return inputDto;
+        }
 
         #endregion
 

@@ -1,20 +1,102 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using Sipolen.ExcelTools.DTO;
 
 namespace Sipolen.ExcelTools
 {
     /// <summary>
     /// SipolenExcel 操作类
     /// </summary>
-    public static class SipolenExcelUtility
+    public class SipolenExcelUtility
     {
+
+
+        #region Services
+
+        /// <summary>
+        /// 处理原表数据
+        /// </summary>
+        /// <param name="sourceDt">原表</param>
+        /// <param name="inputDto">入参</param>
+        /// <returns></returns>
+        public DataTable HanderSourceDt(DataTable sourceDt, TargetExcelInputDto inputDto)
+        {
+            int itemSkuRandom = new Random().Next(10000, 99999);//产生随机5位数
+            long productIdRandom = Convert.ToInt64(inputDto.ExternalProductId + "0");
+
+            for (int i = 0; i < sourceDt.Rows.Count; i++)
+            {
+                #region 随机数递增
+
+                itemSkuRandom++;
+                productIdRandom = productIdRandom + new Random().Next(5, 20);
+
+                #endregion
+
+
+                var row = sourceDt.Rows[i];
+
+                #region 固定值处理
+                //获取指定类型的公共属性
+                PropertyInfo[] propertys = inputDto.GetType().GetProperties();
+                foreach (var item in propertys)
+                {
+                    var v = (DescriptionAttribute[])item.GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    var descriptionName = v[0].Description;
+
+                    if (!string.IsNullOrEmpty(descriptionName))//描述不为空
+                    {
+                        var cellValue = item.GetValue(inputDto);
+                        string[] columnsArr = descriptionName.Split('|');
+                        foreach (var columnName in columnsArr)
+                        {
+                            row[columnName] = cellValue.ToString();
+                        }
+                    }
+                }
+                #endregion
+
+                #region 变化值处理
+                //item_sku
+                string item_sku = row["item_sku"].ToString();
+                string external_product_id = row["external_product_id"].ToString();
+
+                //变体处理
+                if (item_sku.IndexOf('-') != -1 && !string.IsNullOrEmpty(external_product_id))
+                {
+                    //sku
+                    row["item_sku"] = item_sku.Substring(0, item_sku.IndexOf('-') + 1) + itemSkuRandom;
+                    //条形码
+                    row["external_product_id"] = productIdRandom.ToString();
+                    row["part_number"] = productIdRandom.ToString();
+                }
+
+                //标准价 = (原销售价 + 50) * 2 / 0.85 / 汇率
+                var price = ((Convert.ToDecimal(row["standard_price"]) + 50) * 2 / Convert.ToDecimal(0.85) / Convert.ToDecimal(inputDto.CurrencyExchangeRate)).ToString("0.0");
+                row["standard_price"] = price;
+
+                #endregion
+            }
+            return sourceDt;
+        }
+
+
+
+        /// <summary>
+        /// 移表操作
+        /// </summary>
+        /// <param name="sourceDt">原表</param>
+        /// <param name="targetDt">目标表</param>
+        /// <returns></returns>
         public static DataTable MoveDataTable(DataTable sourceDt, DataTable targetDt)
         {
             if (sourceDt != null && sourceDt.Rows.Count > 0)
@@ -28,7 +110,7 @@ namespace Sipolen.ExcelTools
                     {
                         var col = targetDt.Columns[j];
                         var colName = col.ColumnName;
-                        
+
                         //判断目标中的列名是否在原表中存在，如果存在就把值取出来
                         if (sourceDt.Columns.Contains(colName))
                         {
@@ -41,20 +123,18 @@ namespace Sipolen.ExcelTools
             }
             return targetDt;
         }
-
-
-
+        #endregion
 
         #region HandleExcel
 
         /// <summary>
-        /// 利用模板，DataTable导出到Excel（单个类别）
+        /// 利用模板，DataTable导出到Excel
         /// </summary>
         /// <param name="dtSource">DataTable</param>
         /// <param name="targetExcelPath">目标路径</param>
         /// <param name="sheetName">Excel Sheet名称</param>
         /// <returns></returns>
-        public static void ExportExcelFromDt(DataTable dtSource, string targetExcelPath,string sheetName)
+        public static void ExportExcelFromDt(DataTable dtSource, string targetExcelPath, string sheetName)
         {
 
             #region 处理DataTable
@@ -149,5 +229,7 @@ namespace Sipolen.ExcelTools
         }
 
         #endregion
+
+
     }
 }
