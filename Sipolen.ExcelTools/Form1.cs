@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sipolen.Code;
+using Sipolen.ExcelTools.BaiduTranslate;
 using Sipolen.ExcelTools.Model;
 
 namespace Sipolen.ExcelTools
@@ -312,8 +313,12 @@ namespace Sipolen.ExcelTools
             var targetTb = ExcelHelper.RenderDataTableFromExcel(templatePath, currentCountryTemplate.TemplateSheetName, 2);
         }
 
+
         #endregion
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string result = new TransApi().getTransResult("奶油壶 主厨刀 陶瓷 珐琅", "zh", "en");
+        }
     }
 }
