@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\TargetExcelInputDto.cs" />
     <Compile Include="BaiduTranslate\HttpGetUtilty.cs" />
     <Compile Include="BaiduTranslate\TransApi.cs" />
     <Compile Include="BaiduTranslate\TranslateModel.cs" />
@@ -81,6 +82,7 @@
     </Compile>
     <Compile Include="Model\CountryTemplate.cs" />
     <Compile Include="Model\Country.cs" />
+    <Compile Include="SipolenExcelUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

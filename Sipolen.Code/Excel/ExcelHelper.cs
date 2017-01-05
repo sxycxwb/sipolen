@@ -52,7 +52,7 @@ namespace Sipolen.Code
         /// <param name="strHeaderText">表头文本</param>      
         /// <param name="strFileName">保存位置</param>   
         /// <param name="strSheetName">工作表名称</param>   
-        /// <Author>CallmeYhz 2015-11-26 10:13:09</Author>      
+        /// <Author></Author>      
         public static void MyExport(DataTable dtSource, string strHeaderText, string strFileName, string strSheetName, string[] oldColumnNames, string[] newColumnNames)
         {
             if (strSheetName == "")

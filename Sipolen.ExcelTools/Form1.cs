@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sipolen.Code;
-using Sipolen.ExcelTools.BaiduTranslate;
+using Sipolen.ExcelTools.DTO;
 using Sipolen.ExcelTools.Model;
 
 namespace Sipolen.ExcelTools
@@ -31,6 +31,11 @@ namespace Sipolen.ExcelTools
         /// 原表Excel路径
         /// </summary>
         private string sourceExcelPath = "";
+
+        /// <summary>
+        /// 目标模板Excel路径
+        /// </summary>
+        private string targetExcelPath = "";
 
         public Form1()
         {
@@ -104,15 +109,15 @@ namespace Sipolen.ExcelTools
             #endregion
 
             #region 意大利
-            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Italy" });
-            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "Italy" });
-            templateList.Add(new CountryTemplate { TemplateName = "电脑配件", TemplateCode = "", CountryCode = "Italy" });
-            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Italy" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "Italy" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居材料", TemplateCode = "", CountryCode = "Italy" });
-            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Italy" });
-            templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "Italy" });
-            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Italy" });
+            templateList.Add(new CountryTemplate { TemplateName = "办公用品", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "灯表", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "电脑配件", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居材料", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
             #endregion
 
             #region 西班牙
@@ -295,6 +300,44 @@ namespace Sipolen.ExcelTools
         }
 
         /// <summary>
+        /// 确定国际及模板 - 实质是复制模板到工作目录并重命名
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSureConturyTemplate_Click(object sender, EventArgs e)
+        {
+            var selectedCountry = cbCountry.SelectedItem as Country;
+            var selectedCountryTemplate = cbCountryTemplate.SelectedItem as CountryTemplate;
+            var workPath = txtWorkPath.Text.Trim();
+
+            //获取源Excel文件名
+            var sourceExcelName = Path.GetFileNameWithoutExtension(sourceExcelPath);
+            var sourceExcelNameFlag = sourceExcelName.Split('_')[1];
+
+            //获得模板excel路径
+            var extensionName = "xls";
+            string templatePath = string.Format("Template/{0}/{1}.xls", selectedCountry.CountryName, selectedCountryTemplate.TemplateName);
+            if (!File.Exists(templatePath))
+            {
+                templatePath = string.Format("Template/{0}/{1}.xlsm", selectedCountry.CountryName, selectedCountryTemplate.TemplateName);
+                extensionName = "xlsm";
+            }
+            //复制目标文件名
+            var targetFileName = string.Format("{0}_{1}_{2}_{3}.{4}", selectedCountry.CountryName, selectedCountryTemplate.TemplateName, sourceExcelNameFlag, DateTime.Now.ToString("yyyyMMdd-HHmm"), extensionName);
+            //复制目标文件路径
+            var targetPath = Path.Combine(workPath, DateTime.Now.ToString("yyyy-MM-dd"), selectedCountry.CountryName, targetFileName);
+            //复制目标目录路径，不存在则创建
+            var targetDirectory = Path.Combine(workPath, DateTime.Now.ToString("yyyy-MM-dd"), selectedCountry.CountryName);
+            if (!Directory.Exists(targetDirectory))
+            {
+                Directory.CreateDirectory(targetDirectory);
+            }
+            targetExcelPath = targetPath;
+            //执行复制操作
+            File.Copy(templatePath, targetPath);
+        }
+
+        /// <summary>
         /// 开始移表
         /// </summary>
         /// <param name="sender"></param>
@@ -302,23 +345,41 @@ namespace Sipolen.ExcelTools
         private void btnBeginMove_Click(object sender, EventArgs e)
         {
             string sourcePath = sourceExcelPath;//原Excel表路径
-            var currentCountry = cbCountry.SelectedItem as Country;
             var currentCountryTemplate = cbCountryTemplate.SelectedItem as CountryTemplate;
 
-            //获得模板excel路径
-            string templatePath = string.Format("Template/{0}/{1}.xls", currentCountry.CountryName, currentCountryTemplate.TemplateName);
-            if (!File.Exists(templatePath))
-                templatePath = string.Format("Template/{0}/{1}.xlsm", currentCountry.CountryName, currentCountryTemplate.TemplateName);
             var sourceTb = ExcelHelper.RenderDataTableFromExcel(sourcePath, 0, 2);
-            var targetTb = ExcelHelper.RenderDataTableFromExcel(templatePath, currentCountryTemplate.TemplateSheetName, 2);
+            var inputDto = GetExcelInputDto();
+            sourceTb = new SipolenExcelUtility().HanderSourceDt(sourceTb, inputDto);
+            var targetTb = ExcelHelper.RenderDataTableFromExcel(targetExcelPath, currentCountryTemplate.TemplateSheetName, 2);
+            var dt = SipolenExcelUtility.MoveDataTable(sourceTb, targetTb);
+
+            SipolenExcelUtility.ExportExcelFromDt(dt, targetExcelPath, currentCountryTemplate.TemplateSheetName);
         }
 
 
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
+        #region private方法
+
+        private TargetExcelInputDto GetExcelInputDto()
         {
-            string result = new TransApi().getTransResult("奶油壶 主厨刀 陶瓷 珐琅", "zh", "en");
+            var selectCountry = cbCountry.SelectedItem as Country;
+
+            var inputDto = new TargetExcelInputDto();
+            inputDto.ExternalProductId = txtEANCountryCode.Text.Trim() + txtEANFactoryCode.Text.Trim() + txtEANProductCode.Text.Trim();
+            inputDto.BrandName = txtBrandName.Text.Trim();
+            inputDto.FeedProductType = "Test";
+            inputDto.CurrencyExchangeRate = selectCountry.CurrencyExchangeRate;
+            inputDto.Currency = selectCountry.CurrencyUnit;
+            inputDto.Quantity = txtQuantity.Text.Trim();
+            inputDto.ConditionNote = $"Delivery Time {txtDeliveryTimeMin.Text.Trim()}-{txtDeliveryTimeMax.Text.Trim()} Days";
+            inputDto.WebsiteShippingWeight = txtShippingWeight.Text.Trim();
+            inputDto.RecommendedBrowseNodes1 = "000001";
+            inputDto.RecommendedBrowseNodes2 = "000001";
+            return inputDto;
         }
+
+        #endregion
+
     }
 }
