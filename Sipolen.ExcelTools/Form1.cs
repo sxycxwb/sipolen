@@ -13,6 +13,7 @@ using Sipolen.Code;
 using Sipolen.Code.Excel;
 using Sipolen.ExcelTools.DTO;
 using Sipolen.ExcelTools.Model;
+using Sipolen.ExcelTools.SipolenCode;
 
 namespace Sipolen.ExcelTools
 {
@@ -384,7 +385,17 @@ namespace Sipolen.ExcelTools
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var sourceTb = ExcelDictImport.RenderDataTableFromExcel("NodesDict/法国/电脑配件.xls", 1, 0, "法国", "电脑配件");
+            DirectoryInfo theFolder = new DirectoryInfo("NodesDict");
+            foreach (DirectoryInfo nextFolder in theFolder.GetDirectories())
+            {
+                var countryName = nextFolder.Name;
+                foreach (FileInfo nextFile in nextFolder.GetFiles())
+                {
+                    var categoryName = nextFile.Name.Split('.')[0];
+                    var sourceTb = ExcelDictImport.RenderDataTableFromExcel(nextFile.FullName, 1, 0, countryName, categoryName);
+                    new DbOperation().ImportNodeDict(sourceTb);
+                }
+            }
         }
     }
 }

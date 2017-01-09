@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 
 namespace Sipolen.Code.Excel
 {
@@ -19,14 +20,27 @@ namespace Sipolen.Code.Excel
         /// <param name="sheetIndex">要获取数据的工作表序号(从0开始)</param>   
         /// <param name="HeaderRowIndex">工作表标题行所在行号(从0开始)</param>   
         /// <returns></returns>   
-        public static DataTable RenderDataTableFromExcel(string strFileName, int sheetIndex, int HeaderRowIndex, string country, string category)
+        public static DataTable RenderDataTableFromExcel(string strFileName, int sheetIndex, int HeaderRowIndex,
+            string country, string category)
         {
-            using (FileStream file = new FileStream(strFileName, FileMode.Open, FileAccess.Read))
+            IWorkbook workbook = null;
+            try
             {
-                IWorkbook workbook = new HSSFWorkbook(file);
-                string SheetName = workbook.GetSheetName(sheetIndex);
-                return RenderDataTableFromExcel(workbook, SheetName, HeaderRowIndex, country, category);
+                using (FileStream file = new FileStream(strFileName, FileMode.Open, FileAccess.Read))
+                {
+                    workbook = new HSSFWorkbook(file);
+                }
             }
+            catch (Exception ex)
+            {
+                using (FileStream file = new FileStream(strFileName, FileMode.Open, FileAccess.Read))
+                {
+                    workbook = new XSSFWorkbook(file);
+                }
+            }
+
+            string SheetName = workbook.GetSheetName(sheetIndex);
+            return RenderDataTableFromExcel(workbook, SheetName, HeaderRowIndex, country, category);
         }
 
         /// <summary>   
@@ -73,9 +87,16 @@ namespace Sipolen.Code.Excel
                         }
                         #endregion
                         ICell cell = row.GetCell(j);
-                        var fontColor = cell.CellStyle.GetFont(workbook).Color;
-                        if (fontColor == 23)//如果判断是灰色字体，即为不可以类别，将此排除
+                        try
+                        {
+                            var fontColor = cell.CellStyle.GetFont(workbook).Color;
+                            if (fontColor == 23) //如果判断是灰色字体，即为不可以类别，将此排除
+                                break;
+                        }
+                        catch (Exception ex)
+                        {
                             break;
+                        }
                         if (cell == null)
                         {
                             dataRow[j] = null;
