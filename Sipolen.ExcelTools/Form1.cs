@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sipolen.Code;
+using Sipolen.Code.Excel;
 using Sipolen.ExcelTools.DTO;
 using Sipolen.ExcelTools.Model;
 
@@ -114,7 +115,7 @@ namespace Sipolen.ExcelTools
             templateList.Add(new CountryTemplate { TemplateName = "电脑配件", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居材料", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Italy", TemplateSheetName = "Template" });
@@ -155,7 +156,7 @@ namespace Sipolen.ExcelTools
             templateList.Add(new CountryTemplate { TemplateName = "宠物用品", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "电脑", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "户外运动", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
-            templateList.Add(new CountryTemplate { TemplateName = "家居", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居厨房", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "母婴用品", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
             templateList.Add(new CountryTemplate { TemplateName = "玩具和游戏", TemplateCode = "", CountryCode = "Canada", TemplateSheetName = "Template" });
@@ -165,7 +166,7 @@ namespace Sipolen.ExcelTools
             #region 墨西哥
             templateList.Add(new CountryTemplate { TemplateName = "家居建材", TemplateCode = "", CountryCode = "Mexico", TemplateSheetName = "Formatos" });
             templateList.Add(new CountryTemplate { TemplateName = "墨西哥灯表", TemplateCode = "", CountryCode = "Mexico", TemplateSheetName = "Formatos" });
-            templateList.Add(new CountryTemplate { TemplateName = "墨西哥家居表", TemplateCode = "", CountryCode = "Mexico", TemplateSheetName = "Formatos" });
+            templateList.Add(new CountryTemplate { TemplateName = "家居厨房", TemplateCode = "", CountryCode = "Mexico", TemplateSheetName = "Formatos" });
             templateList.Add(new CountryTemplate { TemplateName = "消费电子", TemplateCode = "", CountryCode = "Mexico", TemplateSheetName = "Formatos" });
             #endregion
 
@@ -381,5 +382,9 @@ namespace Sipolen.ExcelTools
 
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var sourceTb = ExcelDictImport.RenderDataTableFromExcel("NodesDict/法国/电脑配件.xls", 1, 0, "法国", "电脑配件");
+        }
     }
 }
