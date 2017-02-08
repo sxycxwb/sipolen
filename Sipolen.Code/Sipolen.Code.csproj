@@ -78,6 +78,7 @@
     <Compile Include="Cache\Cache.cs" />
     <Compile Include="Cache\CacheFactory.cs" />
     <Compile Include="Cache\ICache.cs" />
+    <Compile Include="ClassHttp.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Configs\Configs.cs" />
     <Compile Include="Configs\DBConnection.cs" />
@@ -124,6 +125,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HttpHelper\HttpHelper.csproj">
+      <Project>{f498f2c7-6610-41f1-8a6d-6e89c021d450}</Project>
+      <Name>HttpHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

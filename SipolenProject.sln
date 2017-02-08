@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sipolen.ExcelTools", "Sipol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sipolen.Code", "Sipolen.Code\Sipolen.Code.csproj", "{038B58C1-5A9C-4608-B6FD-FA4D04EC69C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpHelper", "HttpHelper\HttpHelper.csproj", "{F498F2C7-6610-41F1-8A6D-6E89C021D450}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{038B58C1-5A9C-4608-B6FD-FA4D04EC69C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{038B58C1-5A9C-4608-B6FD-FA4D04EC69C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{038B58C1-5A9C-4608-B6FD-FA4D04EC69C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F498F2C7-6610-41F1-8A6D-6E89C021D450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F498F2C7-6610-41F1-8A6D-6E89C021D450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F498F2C7-6610-41F1-8A6D-6E89C021D450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F498F2C7-6610-41F1-8A6D-6E89C021D450}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

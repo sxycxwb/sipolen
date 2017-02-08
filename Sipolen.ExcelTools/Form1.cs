@@ -397,5 +397,12 @@ namespace Sipolen.ExcelTools
                 }
             }
         }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            CommodityCrawler CrawlerForm = new CommodityCrawler();
+            CrawlerForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -67,6 +67,7 @@
             this.txtDeliveryTimeMax = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -254,7 +255,7 @@
             // txtBrandName
             // 
             this.txtBrandName.Location = new System.Drawing.Point(66, 31);
-            this.txtBrandName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBrandName.Margin = new System.Windows.Forms.Padding(2);
             this.txtBrandName.Name = "txtBrandName";
             this.txtBrandName.Size = new System.Drawing.Size(93, 21);
             this.txtBrandName.TabIndex = 17;
@@ -263,7 +264,7 @@
             // txtEANCountryCode
             // 
             this.txtEANCountryCode.Location = new System.Drawing.Point(64, 33);
-            this.txtEANCountryCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEANCountryCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtEANCountryCode.Name = "txtEANCountryCode";
             this.txtEANCountryCode.Size = new System.Drawing.Size(41, 21);
             this.txtEANCountryCode.TabIndex = 19;
@@ -305,7 +306,7 @@
             // txtEANFactoryCode
             // 
             this.txtEANFactoryCode.Location = new System.Drawing.Point(169, 33);
-            this.txtEANFactoryCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEANFactoryCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtEANFactoryCode.Name = "txtEANFactoryCode";
             this.txtEANFactoryCode.Size = new System.Drawing.Size(65, 21);
             this.txtEANFactoryCode.TabIndex = 21;
@@ -325,7 +326,7 @@
             // txtEANProductCode
             // 
             this.txtEANProductCode.Location = new System.Drawing.Point(294, 31);
-            this.txtEANProductCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEANProductCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtEANProductCode.Name = "txtEANProductCode";
             this.txtEANProductCode.Size = new System.Drawing.Size(87, 21);
             this.txtEANProductCode.TabIndex = 23;
@@ -342,7 +343,7 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtEANFactoryCode);
             this.panel1.Location = new System.Drawing.Point(33, 179);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(403, 69);
             this.panel1.TabIndex = 25;
@@ -353,7 +354,7 @@
             this.panel2.Controls.Add(this.txtBrandName);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(463, 179);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(176, 69);
             this.panel2.TabIndex = 26;
@@ -372,7 +373,7 @@
             this.panel3.Controls.Add(this.txtDeliveryTimeMax);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Location = new System.Drawing.Point(33, 259);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(403, 56);
             this.panel3.TabIndex = 27;
@@ -391,7 +392,7 @@
             // txtShippingWeight
             // 
             this.txtShippingWeight.Location = new System.Drawing.Point(328, 18);
-            this.txtShippingWeight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtShippingWeight.Margin = new System.Windows.Forms.Padding(2);
             this.txtShippingWeight.Name = "txtShippingWeight";
             this.txtShippingWeight.Size = new System.Drawing.Size(35, 21);
             this.txtShippingWeight.TabIndex = 25;
@@ -411,7 +412,7 @@
             // txtQuantity
             // 
             this.txtQuantity.Location = new System.Drawing.Point(232, 18);
-            this.txtQuantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(2);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(35, 21);
             this.txtQuantity.TabIndex = 23;
@@ -442,7 +443,7 @@
             // txtDeliveryTimeMin
             // 
             this.txtDeliveryTimeMin.Location = new System.Drawing.Point(65, 18);
-            this.txtDeliveryTimeMin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDeliveryTimeMin.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeliveryTimeMin.Name = "txtDeliveryTimeMin";
             this.txtDeliveryTimeMin.Size = new System.Drawing.Size(35, 21);
             this.txtDeliveryTimeMin.TabIndex = 20;
@@ -462,7 +463,7 @@
             // txtDeliveryTimeMax
             // 
             this.txtDeliveryTimeMax.Location = new System.Drawing.Point(111, 18);
-            this.txtDeliveryTimeMax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDeliveryTimeMax.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeliveryTimeMax.Name = "txtDeliveryTimeMax";
             this.txtDeliveryTimeMax.Size = new System.Drawing.Size(35, 21);
             this.txtDeliveryTimeMax.TabIndex = 18;
@@ -489,11 +490,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnOpen
+            // 
+            this.btnOpen.Location = new System.Drawing.Point(449, 396);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.TabIndex = 29;
+            this.btnOpen.Text = "开启新窗口";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 476);
+            this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -568,6 +580,7 @@
         private System.Windows.Forms.TextBox txtShippingWeight;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnOpen;
     }
 }
 

@@ -9,3 +9,8 @@
 /Sipolen.ExcelTools/obj/Debug
 /Sipolen.Code/bin/Debug
 /Sipolen.Code/obj/Debug
+/HttpHelper/bin/Debug
+/HttpHelper/obj/Debug
+/HttpHelper/packages.config
+/HttpHelper/HttpHelper.csproj.user
+/Lib
